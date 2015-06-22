@@ -1,9 +1,28 @@
-[
-  {
-    "date": 2015-06-18,
-    "author": "Alan Watts",
-    "quote": "What is...is.",
-    "explore": "What is?",
-    "pro-tip": "This is depends on what the definition of is... is."
-  }
-]
+{
+  "mozs": [
+    {
+      "quote": "What is...is.",
+      "author": "Alan Watts",
+      "application": {
+        "explore": "What is?",
+        "tip": "This is depends on what the definition of is... is."
+      },
+      "illustration": {
+        "url": "http://img.com",
+        "alt-text": "something wity about this pic."
+      },
+      "see-also": [
+        "url": "http://link.com",
+        "text": "Click here"
+      ]
+    },
+  ],
+  "authors": [
+    {
+      "name": "Alan Watts",
+      "references": [
+        "http://wikipedia..."
+      ]
+    },
+  ]
+}
