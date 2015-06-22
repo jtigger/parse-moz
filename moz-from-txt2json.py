@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import sys
 import re
+import json
 
 raw_mozs = []
 
@@ -15,15 +16,17 @@ for m in re.finditer(r"(Monday|Tuesday|Wednesday|Thursday|Friday)", raw_moz_data
   index_of_start_of_last_moz = m.start()
 
 for moz in raw_mozs:
-  images = re.finditer(r"!\[[^\]]+\]\([^\)]+\)", moz)
-  links = re.finditer(r"[^!]\[[^\]]+\]\([^\)]+\)", moz)
+  images = re.finditer(r"!\[([^\]]+)\]\(([^\)]+)\)", moz)
+  links = re.finditer(r"[^!]\[([^\]]+)\]\(([^\)]+)\)", moz)
   quotes = re.finditer(r'["“]+(.*)["”]+', moz)
   explores = re.finditer(r"(explore|pro-tip|pro tip):\**(.*)", moz, flags=re.IGNORECASE)
   print "===- start -==="
+  print moz
+  print "--- parse ---"
   for image in images:
-    print "image: " + image.group(0)
+    print "image: { url: " + image.group(2) + "; alt-text: " + image.group(1) + " }"
   for link in links:
-    print "link: " + link.group(0)
+    print "link: { url: " + link.group(2) + "; text: " + link.group(1) + " }"
   for quote in quotes:
     print "quote: " + quote.group(0)
   for explore in explores:
